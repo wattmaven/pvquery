@@ -1,17 +1,66 @@
 [project]
 name = "pvquery"
 version = "0.1.0"
-description = "Add your description here"
+license = { text = "Apache-2.0" }
+classifiers = [
+    "Private :: Do Not Upload",
+]
+description = "A small photovoltaic (PV) microservice"
 readme = "README.md"
 authors = [
     { name = "Elijah Passmore", email = "elijah.passmore@wattmaven.com" }
 ]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "click>=8.1.8",
+    "fastapi>=0.115.11",
+    "loguru>=0.7.3",
+    "pvlib>=0.12.0",
+    "pydantic>=2.10.6",
+    "pydantic-settings>=2.8.1",
+    "python-dotenv>=1.0.1",
+    "sentry-sdk[fastapi,loguru]>=2.24.0",
+    "uvicorn>=0.34.0",
+]
 
 [project.scripts]
-pvquery = "pvquery:main"
+pvquery = "pvquery.cli:main"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "commitizen>=4.1.1",
+    "httpx>=0.28.1",
+    "lefthook>=1.10.10",
+    "pytest>=8.3.4",
+    "pytest-cov>=6.0.0",
+    "ruff>=0.9.4",
+]
+
+[tool.ruff.lint]
+# See https://docs.astral.sh/ruff/rules
+select = [
+    "I",
+    "N801",
+    "N802",
+    "N803",
+    "N804",
+    "N805",
+    "N806",
+    "N807",
+    "N811",
+    "N812",
+    "N813",
+    "N814",
+    "N815",
+    "N816",
+    "N817",
+    "N818",
+    "N999",
+    "FAST001",
+    "FAST002",
+    "FAST003",
+]
